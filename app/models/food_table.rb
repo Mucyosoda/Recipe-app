@@ -1,0 +1,2 @@
+class FoodTable < ApplicationRecord
+end
