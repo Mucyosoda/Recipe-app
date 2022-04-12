@@ -1,16 +1,16 @@
 <header>
   <div>
-    <%# <%= link_to image_tag("Fitness_Logo.svg"), authenticated_root_path %> %>
-    <span>
-    logo
-    </span>
+    <%= link_to image_tag("logo.svg") %>
   </div>
-  <div class="form-container">
-      <form>
-        <input type="search" placeholder="search" id="search"/>
-        <div>
-          <button type="submit" id="submit-btn"><i class="fas fa-search"></i> Search</button>
-        </div>
-      </form>
+  <div class="nav-links">
+    <nav class="<%= active?(root_path) %>">
+    <%= link_to "Foods", root_path %>
+    </nav>
+    <nav class="<%= active?(recipes_path) %>">
+    <%= link_to "Recipes", recipes_path %>
+    </nav>
+    <nav class="<%= active?(public_recipes_path) %>">
+    <%= link_to "Public recipes", public_recipes_path %>
+    </nav>
   </div>
 </header>

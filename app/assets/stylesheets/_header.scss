@@ -1,0 +1,36 @@
+@import "variables";
+@import "mixins";
+header {
+    @include display(row, space-between, center);
+    div {
+        align-items: center;
+        &:first-of-type {
+            @include display(row, initial, center);
+            img {
+                width: 80px;
+            }
+        }
+        &.nav-links {
+            min-width: 500px;
+            display: flex;
+            justify-content: space-around;
+            nav > a {
+                width: 50px;
+                font-size: 20px;
+                color: black;
+                text-decoration: none;
+            }
+            nav :hover {
+                width: 50px;
+                font-size: 20px;
+                color: red;
+                opacity: 0.5;
+            }
+            .active > a {
+                width: 50px;
+                font-size: 20px;
+                color: red;
+            }
+        }
+    }
+}
