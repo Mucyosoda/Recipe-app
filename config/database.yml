@@ -24,6 +24,9 @@ default: &default
 development:
   <<: *default
   database: recip_app_development
+  username: postgres
+  host: localhost
+  password: ahmed
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
