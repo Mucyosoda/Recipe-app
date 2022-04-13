@@ -11,22 +11,22 @@
     </div>
   <% end %>
 
-  <div>
+  <div class="form-group">
     <%= form.label :Food_name, style: "display: block" %>
-    <%= form.text_field :Food_name %>
+    <%= form.text_field :Food_name, class:"form-control" %>
   </div>
 
-  <div>
+  <div class="form-group">
     <%= form.label :Unit, style: "display: block" %>
-    <%= form.number_field :Unit %>
+    <%= form.number_field :Unit ,class:"form-control" %>
   </div>
 
-  <div>
+  <div class="form-group">
     <%= form.label :Price, style: "display: block" %>
-    <%= form.number_field :Price %>
+    <%= form.number_field :Price, class:"form-control" %>
   </div>
 
-  <div>
-    <%= form.submit %>
+  <div class="form-group">
+    <%= form.submit class:"btn btn-primary" %>
   </div>
 <% end %>
