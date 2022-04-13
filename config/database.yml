@@ -23,7 +23,7 @@ default: &default
 
 development:
   <<: *default
-  database: recip_app_development
+  database: recipe_app_development
   username: postgres
   host: localhost
   password: ahmed
