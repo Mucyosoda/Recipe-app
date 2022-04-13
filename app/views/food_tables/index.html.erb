@@ -1,14 +1,28 @@
 <p style="color: green"><%= notice %></p>
 
 <h1>Food tables</h1>
+<table class="table table-striped table-bordered table-hover">
+  <thead class="table-dark">
+    <tr>
+      <th>Food type</th>
+      <th>Unit</th>
+      <th>Price</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
 
-<div id="food_tables">
-  <% @food_tables.each do |food_table| %>
-    <%= render food_table %>
-    <p>
-      <%= link_to "Show", food_table %>
-    </p>
-  <% end %>
-</div>
-
-<%= link_to "New", new_food_table_path %>
+  <tbody>
+    <% @food_tables.each do |food_table| %>
+    <tr>
+      <td><%= food_table.Food_name %></td>
+      <td><%= food_table.Unit %></td>
+      <td><%= food_table.Price %></td>
+      <td><%= link_to 'Show', food_table %></td>
+      <td><%= link_to 'Edit', edit_food_table_path(food_table) %></td>
+      <td><%= link_to 'Delete', food_table, method: :delete, data: {confirm: 'Are you sure?'} %></td>
+      
+    </tr>
+    <% end %>
+  </tbody>
+  </table>
+  <%= link_to "Add Food", new_food_table_path, class:"btn btn-secondary" %>
