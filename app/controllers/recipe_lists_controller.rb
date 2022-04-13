@@ -1,5 +1,5 @@
 class RecipeListsController < ApplicationController
-  before_action :set_recipe_list, only: %i[ show edit update destroy ]
+  before_action :set_recipe_list, only: %i[show edit update destroy]
 
   # GET /recipe_lists or /recipe_lists.json
   def index
@@ -7,8 +7,7 @@ class RecipeListsController < ApplicationController
   end
 
   # GET /recipe_lists/1 or /recipe_lists/1.json
-  def show
-  end
+  def show; end
 
   # GET /recipe_lists/new
   def new
@@ -16,8 +15,7 @@ class RecipeListsController < ApplicationController
   end
 
   # GET /recipe_lists/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /recipe_lists or /recipe_lists.json
   def create
@@ -25,7 +23,7 @@ class RecipeListsController < ApplicationController
 
     respond_to do |format|
       if @recipe_list.save
-        format.html { redirect_to recipe_list_url(@recipe_list), notice: "Recipe list was successfully created." }
+        format.html { redirect_to recipe_list_url(@recipe_list), notice: 'Recipe list was successfully created.' }
         format.json { render :show, status: :created, location: @recipe_list }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +36,7 @@ class RecipeListsController < ApplicationController
   def update
     respond_to do |format|
       if @recipe_list.update(recipe_list_params)
-        format.html { redirect_to recipe_list_url(@recipe_list), notice: "Recipe list was successfully updated." }
+        format.html { redirect_to recipe_list_url(@recipe_list), notice: 'Recipe list was successfully updated.' }
         format.json { render :show, status: :ok, location: @recipe_list }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,19 +50,20 @@ class RecipeListsController < ApplicationController
     @recipe_list.destroy
 
     respond_to do |format|
-      format.html { redirect_to recipe_lists_url, notice: "Recipe list was successfully destroyed." }
+      format.html { redirect_to recipe_lists_url, notice: 'Recipe list was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_recipe_list
-      @recipe_list = RecipeList.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def recipe_list_params
-      params.require(:recipe_list).permit(:name, :description)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_recipe_list
+    @recipe_list = RecipeList.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def recipe_list_params
+    params.require(:recipe_list).permit(:name, :description)
+  end
 end
