@@ -1,10 +1,12 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @food_table %>
-
-<div>
-  <%= link_to "Edit", edit_food_table_path(@food_table) %> |
-  <%= link_to "Back to tables", food_tables_path %>
-
-  <%= button_to "Delete", @food_table, method: :delete %>
+<div class="jumbotron">
+  <h1 class="display-4"><%= @food_table.Food_name %></h1>
+  <p class="lead">
+  Unit: <%= @food_table.Unit %> | Price: <%= @food_table.Price %>
+  <br/><br>
+  <%= link_to "Edit", edit_food_table_path(@food_table), class:"btn btn-secondary" %> |
+    <%= link_to "Back to tables", food_tables_path, class:"btn btn-dark" %>
+  <hr class="my-4">
+  <%= button_to "Delete", @food_table, method: :delete, class:"btn btn-danger" %>
 </div>
