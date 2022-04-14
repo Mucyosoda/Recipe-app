@@ -1,1 +1,9 @@
-<h1> hello from receipes index page</h1>
+<secion class="recipe-section">
+<% if @recipes.empty?%>
+<p> No Recipes Added yet</p>
+<%end%>
+
+<% @recipes.each do |recipe|%>
+<%= render 'shared/recipe', :recipe => recipe %>
+<%end%>
+</secion>
