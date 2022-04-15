@@ -16,9 +16,16 @@ class RecipesController < ApplicationController
   def create
     @recipe= current_user.recipes.new(recipe_params)
     if @recipe.save
-    format.html { redirect_to recipe_path, notice: 'Recipe created successfully' }
+    format.html { redirect_to recipes_path, notice: 'Recipe created successfully' }
     else
       format.html { redirect_to new_recipe_path, notice: 'something went wrong, Please try again' }
     end
+  end
+  
+  def destroy
+    @recipe = Recipe.find(params[:id])
+    @recipe.destroy
+    flash[:notice] = 'Recipe removed successfully'
+    redirect_to recipes_path
   end
 end
