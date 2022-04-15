@@ -1,0 +1,28 @@
+<div>
+    <div>
+        <%= link_to 'Recipes', recipes_path %>
+    </div>
+    <h1>Add new recipe</h1>
+
+    <%= form_with model: [@recipe] do |f| %>
+    <div>
+        <%= f.text_field :name, placeholder: 'Recipe name' %>
+    </div>
+
+    <div>
+        <%= f.text_area :description, placeholder: 'Recipe description' %>
+    </div>
+
+    <div>
+        <%= f.number_field :preparation_time,placeholder: '00:00' %>
+    </div>
+
+    <div>
+        <%= f.number_field :cooking_time,placeholder: '00:00' %>
+    </div>
+
+    <div>
+        <%= f.submit %>
+    </div>
+    <% end %>
+</div>

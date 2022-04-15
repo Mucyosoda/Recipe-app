@@ -1,16 +1,18 @@
 <div>
-  <h1>Recipe List</h1>
-  <%= link_to 'Add Food', recipes_path %>
-  <% if @recipes.empty? %>
-    <p>No foods added yet</p>
-  <% else %>
-  <% @recipes.each do |recipe| %>
-    <div>
-      <p><%= recipe.name %></p>
-      <p><%= recipe.measurement_unit %></p>
-      <p><%= recipe.price %></p>
-      <p><%= button_to 'Delete', food_path(recipe), method: :delete %></p>
+  <div>
+     <h1>Recipes</h1>
+     <div>
+      <%= link_to 'Add Recipe', new_recipe_path(@recipe) %>
     </div>
-  <% end %>
-  <% end %>
+    <% @recipes.each do |recipe| %>
+        <div>
+          <h2 ><%= recipe.name %></h2>
+          <p><%= recipe.description %></p>
+          <ul>
+            <li class=""><%= link_to 'Show', recipe_path(recipe)%></li>
+            <li class="ml-5"><%= button_to 'Delete', recipe_path(recipe), method: :delete %></li>
+          </ul>
+        </div>
+    <% end %>
+   </div>
 </div>
