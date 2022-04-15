@@ -1,1 +1,57 @@
-<h1> hello from receipes show page</h1>
+<div>
+    <div>
+        <div>
+            <h2><%= @recipe.name %></h2>
+            <div>
+                <div>
+                    <%= form_with url: recipe_path(@recipe.id), method: "put" do |form| %>
+                        <%= form.check_box :public,  onchange: "this.form.submit();", checked: @recipe.public %>
+                    <% end %>
+                </div>
+            </div>
+            <div>
+                <span>Preparation time:</span>
+                <span> <%= @recipe.preparation_time %> hours</span>
+            </div>
+            <div>
+                <span>Cooking time:</span>
+                <span><%= @recipe.cooking_time %> hours</span>
+            </div>
+            <div>
+                <h3>Cooking steps:</h3>
+                <p><%= @recipe.description %></p>
+            </div>
+        </div>
+
+        <div>
+            <%= button_to "Generate shopping list", '#', disabled: true %>
+            <%= button_to "Add ingredient", '#', disabled: true %>
+        </div>
+        <div>
+            <div>
+                <span>
+                    Food
+                </span>
+                <span>
+                    Quantity
+                </span>
+                <span>
+                    Price
+                </span>
+                <span>
+                    Action
+                </span>
+            </div>
+            <div>
+                <% @recipe_foods.each do |recipe_food| %>
+                <span><%= recipe_food.food.name %></span>
+                <span><%= "#{recipe_food.quantity} #{recipe_food.food.measurement_unit}" %>
+                </span>
+                <span><%= "$#{recipe_food.quantity * recipe_food.food.price}" %></span>
+                <span><%= button_to 'Delete', recipe_recipe_food_path(@recipe.id, recipe_food.id), method: :delete%>
+                </span>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>
