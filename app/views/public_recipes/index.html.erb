@@ -1,1 +1,33 @@
-<h1> hello from public index page</h1>
+<div>
+    <div>
+        <% if @public_recipes.empty? %>
+        <div>
+            <h1>no recipes added yet!<h1>
+        </div>
+        <% else %>
+        <div>
+            <% @public_recipes.each do |public_recipe| %>
+            <%= link_to recipe_path(public_recipe.id) do %>
+            <div>
+                <div>
+                    <h1><%= public_recipe.name %></h1>
+                    <p><%= "By: #{public_recipe.user.name}" %></p>
+                </div>
+                <div>
+                    <p>
+                        <%= "Total food items: #{public_recipe.recipe_foods.count}" %></p>
+                    <%total=0%>
+                    <% public_recipe.recipe_foods.each do |food| %>
+                    <%sum = food.quantity * food.food.price %>
+                    <%total += sum%>
+                    <%p total%>
+                    <%end%>
+                    <p><%= "Total price: #{total} $"%></p>
+                </div>
+            </div>
+            <% end %>
+            <% end %>
+        </div>
+        <% end %>
+    </div>
+</div>
