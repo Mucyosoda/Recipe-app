@@ -1,1 +1,16 @@
-<h1> hello from foods index page</h1>
+<div>
+  <h1>Food List</h1>
+  <%= link_to 'Add Food', new_food_path %>
+  <% if @foods.empty? %>
+    <p>No foods added yet</p>
+  <% else %>
+  <% @foods.each do |food| %>
+    <div>
+      <p><%= food.name %></p>
+      <p><%= food.measurement_unit %></p>
+      <p><%= food.price %></p>
+      <p><%= button_to 'Delete', food_path(food), method: :delete %></p>
+    </div>
+  <% end %>
+  <% end %>
+</div>
