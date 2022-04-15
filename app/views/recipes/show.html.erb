@@ -5,7 +5,7 @@
             <div>
                 <div>
                     <%= form_with url: recipe_path(@recipe.id), method: "put" do |form| %>
-                        <%= form.check_box :public,  onchange: "this.form.submit();", checked: @recipe.public %>
+                    <%= form.check_box :public,  onchange: "this.form.submit();", checked: @recipe.public %>
                     <% end %>
                 </div>
             </div>
@@ -25,7 +25,7 @@
 
         <div>
             <%= button_to "Generate shopping list", '#', disabled: true %>
-            <%= button_to "Add ingredient", '#', disabled: true %>
+            <%= link_to "Add ingredient", new_recipe_recipe_food_path(@recipe.id) %>
         </div>
         <div>
             <div>
