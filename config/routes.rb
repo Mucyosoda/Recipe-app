@@ -5,8 +5,8 @@ Rails.application.routes.draw do
   # root "articles#index"
   root "foods#index"
   resources :foods, only: [:index]
-  resources :recipes, only: [:index, :show, :new] do
-    resources :recipe_foods, only: %i[create destroy]
+  resources :recipes do
+    resources :recipe_foods, only: %i[create destroy new]
   end
   resources :public_recipes, only: [:index, :show]
 end

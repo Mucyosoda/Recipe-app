@@ -16,7 +16,8 @@ class RecipesController < ApplicationController
   def create
     @recipe = current_user.recipes.new(recipe_params)
     if @recipe.save
-      format.html { redirect_to recipes_path, notice: 'Recipe created successfully' }
+      flash[:notice] = 'Recipe created successfully'
+      redirect_to recipes_path
     else
       format.html { redirect_to new_recipe_path, notice: 'something went wrong, Please try again' }
     end
