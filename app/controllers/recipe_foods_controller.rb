@@ -10,8 +10,8 @@ class RecipeFoodsController < ApplicationController
       flash[:notice] = 'Ingredient added successfully.'
       redirect_to recipe_path(@recipe.id)
     else
-      format.html { redirect_to recipe_path(@recipe), notice: 'something went wrong, Please try again' }
-    end
+      format.html { render :new, status: :unprocessable_entity }
+        end
   end
 
   def destroy
