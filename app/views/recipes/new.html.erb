@@ -1,28 +1,34 @@
 <div>
-    <div>
-        <%= link_to 'Recipes', recipes_path %>
-    </div>
+   
+    <br />
+    <br>
     <h1>Add new recipe</h1>
 
     <%= form_with model: [@recipe] do |f| %>
-    <div>
-        <%= f.text_field :name, placeholder: 'Recipe name' %>
+    <div class="form-group">
+        <label>Recipe name</label>
+        <%= f.text_field :name, placeholder: '', class:"form-control" %>
     </div>
 
-    <div>
-        <%= f.text_area :description, placeholder: 'Recipe description' %>
+    <div class="form-group">
+        <label >Recipe description</label>
+        <%= f.text_area :description, class:"form-control" %>
     </div>
 
-    <div>
+    <div class="form-group">
+        <label >Preparation Time</label><br />
         <%= f.number_field :preparation_time,placeholder: '00:00' %>
     </div>
 
-    <div>
+    <div class="form-group">
+        <label >Cooking Time</label><br />
         <%= f.number_field :cooking_time,placeholder: '00:00' %>
     </div>
 
     <div>
-        <%= f.submit %>
+        <%= f.submit class:"btn btn-secondary" %>
     </div>
     <% end %>
 </div>
+
+<br>
