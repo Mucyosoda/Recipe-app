@@ -75,5 +75,5 @@ group :test do
   gem 'selenium-webdriver'
   gem 'webdrivers'
 end
-gem 'rails-controller-testing'
 gem 'devise'
+gem 'rails-controller-testing'

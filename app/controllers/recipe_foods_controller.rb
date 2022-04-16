@@ -11,7 +11,7 @@ class RecipeFoodsController < ApplicationController
       redirect_to recipe_path(@recipe.id)
     else
       format.html { render :new, status: :unprocessable_entity }
-        end
+    end
   end
 
   def destroy
