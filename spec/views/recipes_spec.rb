@@ -80,7 +80,7 @@ RSpec.describe 'Recipe', type: :system do
 
     recipe = user.recipes.create!(name: 'Flafel', description: 'Egyptian', preparation_time: 2, cooking_time: 3)
     food = user.foods.create!(name: 'pineapple', measurement_unit: 'grams', price: 3)
-    RecipeFood.create!(quantity: 50, recipe:recipe, food:food)
+    RecipeFood.create!(quantity: 50, recipe: recipe, food: food)
 
     visit "/recipes/#{recipe.id}"
 

@@ -1,12 +1,10 @@
-
-  
 require 'rails_helper'
 
 RSpec.describe 'Login', type: :system do
   it 'shows the login page' do
     visit '/users/sign_in'
     expect(page).to have_content('Log in')
-  end 
+  end
 
   it 'has email, password and login fields in the form' do
     visit '/users/sign_in'
