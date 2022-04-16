@@ -1,9 +1,15 @@
 class ShoppingList < ApplicationRecord
-  def total_price(ingredients)
-    price = 0
-    ingredients.each do |recipe_food|
-      price += Food.find(recipe_food.food_id).price * recipe_food.quantity
+  def self.missing_food_id(recipes)
+    selected_food = []
+    recipes.each do |recipe|
+      recipe.recipe_foods.each do |food|
+        selected_food << food.food_id
+      end
     end
-    price
+    available_food = []
+    Food.all.each do |food|
+      available_food << food.id
+    end
+   available_food - selected_food
   end
 end

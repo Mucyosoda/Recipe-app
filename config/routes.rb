@@ -18,6 +18,6 @@ Rails.application.routes.draw do
   resources :recipes do
     resources :recipe_foods, only: %i[create destroy new]
   end
-  resources :shopping_list, only: [:index]
+  resources :shopping_lists, only: [:index]
   resources :public_recipes, only: [:index]
 end
