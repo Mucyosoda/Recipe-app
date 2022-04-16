@@ -1,6 +1,10 @@
 class RecipesController < ApplicationController
   def index
-    @recipes = current_user.recipes
+    @recipes = if current_user.nil?
+                 []
+               else
+                 current_user.recipes
+               end
   end
 
   def new
@@ -31,15 +35,9 @@ class RecipesController < ApplicationController
   end
 
   def update
-    @recipe = Recipe.find(params[:id])
-    @recipe_state = params[:public]
-    @checked = false
-    if @recipe_state == true
-      checked = true
-    else
-      checked
-    end
-    @recipe.update_attribute(:public, checked)
+    @recipe = Recipe.find_by(id: params[:id])
+    public = params[:public] == '1'
+    @recipe.update_attribute(:public, public)
   end
 
   private

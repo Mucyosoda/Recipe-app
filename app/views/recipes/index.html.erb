@@ -1,7 +1,12 @@
 <br />
 <h1>List of Recipes</h1>
-<%= link_to 'Add Recipe', new_recipe_path(@recipe), class:"btn btn-secondary" %>
-
+<div>
+  <%if can? :create, Recipe%>
+  <%= link_to 'Add Recipe', new_recipe_path(@recipe),class:"btn btn-secondary"  %>
+  <%else%>
+  <%= button_to 'Add Recipe', new_recipe_path(@recipe),disabled:true,class:"btn btn-secondary"  %>
+  <%end%>
+</div>
 <div id="recipes">
   <br>
   <% @recipes.each do |recipe| %>
@@ -12,8 +17,11 @@
         <br />
         <div class="d-flex justify-content-between">
           <%= link_to 'Show', recipe_path(recipe), class:"btn btn-success"%>
+          <%if can? :destroy, Recipe%>
           <%= button_to "Delete", recipe_path(recipe), method: :delete, data: {confirm: 'Are you sure?'}, class:"btn btn-secondary" %>
-        </div>
+          <%else%>
+          <%= button_to "Delete", recipe_path(recipe), method: :delete, disabled:true%>
+          <%end%> </div>
       </div>
       <div class="col-8">
         <p class="card-text"> <%= recipe.description %></p>
