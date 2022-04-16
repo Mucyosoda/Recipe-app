@@ -16,7 +16,7 @@ class RecipeFoodsController < ApplicationController
 
   def destroy
     @recipe_food = RecipeFood.find(params[:id])
-    @recipe = recipe_food.recipe
+    @recipe = @recipe_food.recipe
     @recipe_food.destroy
     redirect_to recipe_path(@recipe)
     flash[:notice] = 'Ingredient was deleted'
