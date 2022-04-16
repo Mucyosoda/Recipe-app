@@ -10,6 +10,6 @@ class ShoppingList < ApplicationRecord
     Food.all.each do |food|
       available_food << food.id
     end
-   available_food - selected_food
+    available_food - selected_food
   end
 end
