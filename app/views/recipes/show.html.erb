@@ -1,33 +1,41 @@
-<div>
-    <div>
-        <div>
-            <h2><%= @recipe.name %></h2>
-            <div>
-                <div>
-                    <%= form_with url: recipe_path(@recipe.id), method: "put" do |form| %>
-                    <%= form.check_box :public,  onchange: "this.form.submit();", checked: @recipe.public %>
-                    <% end %>
-                </div>
-            </div>
-            <div>
-                <span>Preparation time:</span>
-                <span> <%= @recipe.preparation_time %> hours</span>
-            </div>
-            <div>
-                <span>Cooking time:</span>
-                <span><%= @recipe.cooking_time %> hours</span>
-            </div>
-            <div>
-                <h3>Cooking steps:</h3>
-                <p><%= @recipe.description %></p>
-            </div>
-        </div>
+<br /><br />
+<div class="card text-left container">
+  <div class="card-header row bg-info ">
+    <div class="col-8">
+        <h3> <%= @recipe.name %></h3>
+    </div>
 
-        <div>
-            <%= button_to "Generate shopping list", '#', disabled: true %>
-            <%= link_to "Add ingredient", new_recipe_recipe_food_path(@recipe.id) %>
-        </div>
-        <div>
+    <div class="col-2">
+    <p class:"float-right"> <%= form_with url: recipe_path(@recipe.id), method: "put" do |form| %>
+        Public <%= form.check_box :public,  onchange: "this.form.submit();", checked: @recipe.public %>
+        <% end %></p>
+    </div>
+ </div>
+ 
+    <div class="card-body">
+    <div>
+    <span>Preparation time:</span>
+    <span> <%= @recipe.preparation_time %> hours</span>
+</div>
+<div>
+    <span>Cooking time:</span>
+    <span><%= @recipe.cooking_time %> hours</span>
+</div>
+<br />
+<div>
+    <h4>Cooking steps:</h4>
+</div>
+    <p class="card-text"> <%= @recipe.description %> </p>
+    <%= button_to "Generate shopping list", '#', disabled: true, class:"btn btn-secondary" %>
+    <br />
+    <%= link_to "Add ingredient", new_recipe_recipe_food_path(@recipe.id), class:"btn btn-dark" %>
+  </div>
+</div>
+<br />
+<br />
+<hr>
+
+<div>
             <div>
                 <span>
                     Food
@@ -43,15 +51,4 @@
                 </span>
             </div>
             <div>
-                <% @recipe_foods.each do |recipe_food| %>
-                <span><%= recipe_food.food.name %></span>
-                <span><%= "#{recipe_food.quantity} #{recipe_food.food.measurement_unit}" %>
-                </span>
-                <span><%= "$#{recipe_food.quantity * recipe_food.food.price}" %></span>
-                <span><%= button_to 'Delete', recipe_recipe_food_path(@recipe.id, recipe_food.id), method: :delete%>
-                </span>
-                <% end %>
-            </div>
-        </div>
-    </div>
-</div>
+    
