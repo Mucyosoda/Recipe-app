@@ -1,18 +1,26 @@
 <div>
   <div>
-     <h1>Recipes</h1>
-     <div>
+    <h1>Recipes</h1>
+    <div>
+      <%if can? :create, Recipe%>
       <%= link_to 'Add Recipe', new_recipe_path(@recipe) %>
+      <%else%>
+      <%= button_to 'Add Recipe', new_recipe_path(@recipe),disabled:true %>
+      <%end%>
     </div>
     <% @recipes.each do |recipe| %>
-        <div>
-          <h2 ><%= recipe.name %></h2>
-          <p><%= recipe.description %></p>
-          <ul>
-            <li class=""><%= link_to 'Show', recipe_path(recipe)%></li>
-            <li class="ml-5"><%= button_to 'Delete', recipe_path(recipe), method: :delete %></li>
-          </ul>
-        </div>
+    <div>
+      <h2><%= recipe.name %></h2>
+      <p><%= recipe.description %></p>
+      <ul>
+        <li class=""><%= link_to 'Show', recipe_path(recipe)%></li>
+        <%if can? :destroy, Recipe%>
+        <li class="ml-5"><%= button_to 'Delete', recipe_path(recipe), method: :delete %></li>
+        <%else%>
+        <li class="ml-5"><%= button_to 'Delete', recipe_path(recipe), method: :delete , disabled:true%></li>
+        <%end%>
+      </ul>
+    </div>
     <% end %>
-   </div>
+  </div>
 </div>

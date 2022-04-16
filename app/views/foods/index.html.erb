@@ -2,8 +2,11 @@
 <h1>List of food</h1>
 <br />
 
-
+<% if can? :create, Food %>
 <%= link_to 'Add Food', new_food_path, class:"btn btn-secondary" %>
+<%else%>
+<%= button_to 'Add Food', new_food_path, disabled: true %>
+<%end%>
 <% if @foods.empty? %>
 <p>User has no foods yet</p>
 <% else %>
@@ -23,8 +26,12 @@
       <td><%= food.name %></td>
       <td><%= food.measurement_unit %></td>
       <td><%= food.price %></td>
+      <% if can? :destroy, Food%>
       <td><%= button_to 'Delete', food_path(food), method: :delete, class:"btn btn-danger" %></td>
+      <%else%>
+      <td><%= button_to 'Delete', food_path(food),disabled: true , method: :delete, class:"btn btn-secondary" %></td>
 
+      <%end%>
     </tr>
     <% end %>
   </tbody>

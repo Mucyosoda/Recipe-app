@@ -3,11 +3,13 @@
         <div>
             <h2><%= @recipe.name %></h2>
             <div>
+                <% if can? :update, Recipe%>
                 <div>
                     <%= form_with url: recipe_path(@recipe.id), method: "put" do |form| %>
                     <%= form.check_box :public,  onchange: "this.form.submit();", checked: @recipe.public %>
                     <% end %>
                 </div>
+                <%end%>
             </div>
             <div>
                 <span>Preparation time:</span>
@@ -22,11 +24,12 @@
                 <p><%= @recipe.description %></p>
             </div>
         </div>
-
+        <% if can? :create, RecipeFood %>
         <div>
             <%= button_to "Generate shopping list", '#', disabled: true %>
             <%= link_to "Add ingredient", new_recipe_recipe_food_path(@recipe.id) %>
         </div>
+        <%end%>
         <div>
             <div>
                 <span>
@@ -48,7 +51,9 @@
                 <span><%= "#{recipe_food.quantity} #{recipe_food.food.measurement_unit}" %>
                 </span>
                 <span><%= "$#{recipe_food.quantity * recipe_food.food.price}" %></span>
+                <% if can? :destroy, RecipeFood %>
                 <span><%= button_to 'Delete', recipe_recipe_food_path(@recipe.id, recipe_food.id), method: :delete%>
+                <%end%>
                 </span>
                 <% end %>
             </div>
