@@ -1,26 +1,32 @@
+<br />
+<h1>List of Recipes</h1>
 <div>
-  <div>
-    <h1>Recipes</h1>
-    <div>
-      <%if can? :create, Recipe%>
-      <%= link_to 'Add Recipe', new_recipe_path(@recipe) %>
-      <%else%>
-      <%= button_to 'Add Recipe', new_recipe_path(@recipe),disabled:true %>
-      <%end%>
+  <%if can? :create, Recipe%>
+  <%= link_to 'Add Recipe', new_recipe_path(@recipe),class:"btn btn-secondary"  %>
+  <%else%>
+  <%= button_to 'Add Recipe', new_recipe_path(@recipe),disabled:true,class:"btn btn-secondary"  %>
+  <%end%>
+</div>
+<div id="recipes">
+  <br>
+  <% @recipes.each do |recipe| %>
+  <div class="card text-white border-secondary bg-info mb-1" style="max-width: 48rem;">
+    <div class="card-body row">
+      <div class="col-4">
+        <h2 class="card-title"><%= recipe.name %></h2>
+        <br />
+        <div class="d-flex justify-content-between">
+          <%= link_to 'Show', recipe_path(recipe), class:"btn btn-success"%>
+          <%if can? :destroy, Recipe%>
+          <%= button_to "Delete", recipe_path(recipe), method: :delete, data: {confirm: 'Are you sure?'}, class:"btn btn-secondary" %>
+          <%else%>
+          <%= button_to "Delete", recipe_path(recipe), method: :delete, disabled:true%>
+          <%end%> </div>
+      </div>
+      <div class="col-8">
+        <p class="card-text"> <%= recipe.description %></p>
+      </div>
     </div>
-    <% @recipes.each do |recipe| %>
-    <div>
-      <h2><%= recipe.name %></h2>
-      <p><%= recipe.description %></p>
-      <ul>
-        <li class=""><%= link_to 'Show', recipe_path(recipe)%></li>
-        <%if can? :destroy, Recipe%>
-        <li class="ml-5"><%= button_to 'Delete', recipe_path(recipe), method: :delete %></li>
-        <%else%>
-        <li class="ml-5"><%= button_to 'Delete', recipe_path(recipe), method: :delete , disabled:true%></li>
-        <%end%>
-      </ul>
-    </div>
-    <% end %>
   </div>
+  <% end %>
 </div>

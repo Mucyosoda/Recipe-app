@@ -1,33 +1,30 @@
-<div>
-    <div>
-        <% if @public_recipes.empty? %>
-        <div>
-            <h1>no recipes added yet!<h1>
-        </div>
-        <% else %>
-        <div>
-            <% @public_recipes.each do |public_recipe| %>
-            <%= link_to recipe_path(public_recipe.id) do %>
+<br />
+<h1>List of Public recipe</h1>
+<br />
+<div class="bg-image hover-zoom">
+<br>
+    <% @public_recipes.each do |public_recipe| %>
+        <%= link_to recipe_path(public_recipe.id) do %>
+        <div class="card text-white border-secondary bg-info mb-3" style="max-width: 48rem;">
+            <div class="card-body row bg-text hover-zoom">
+        
+                <div class="col-4"> <h1><%= public_recipe.name %></h1>
+                <br />
+                <p><%= "By: #{public_recipe.user.name}" %></p>
+             </div>
             <div>
-                <div>
-                    <h1><%= public_recipe.name %></h1>
-                    <p><%= "By: #{public_recipe.user.name}" %></p>
-                </div>
-                <div>
-                    <p>
-                        <%= "Total food items: #{public_recipe.recipe_foods.count}" %></p>
-                    <%total=0%>
-                    <% public_recipe.recipe_foods.each do |food| %>
-                    <%sum = food.quantity * food.food.price %>
-                    <%total += sum%>
-                    <%p total%>
-                    <%end%>
-                    <p><%= "Total price: #{total} $"%></p>
-                </div>
-            </div>
-            <% end %>
-            <% end %>
+             <p>
+                 <%= "Total food items: #{public_recipe.recipe_foods.count}" %></p>
+                <%total=0%>
+                <% public_recipe.recipe_foods.each do |food| %>
+                <%sum = food.quantity * food.food.price %>
+                <%total += sum%>
+                <%p total%>
+                <%end%>
+                <p><%= "Total price: #{total} $"%></p>
+         </div>
         </div>
-        <% end %>
-    </div>
+      </div>
+    <% end %>
+    <% end %>
 </div>

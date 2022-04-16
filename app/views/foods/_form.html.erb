@@ -11,22 +11,22 @@
       </div>
     <% end %>
   
-    <div>
+    <div class="form-group">
       <%= form.label :Name, style: "display: block" %>
       <%= form.text_field :name %>
     </div>
   
-    <div>
+    <div class="form-group">
       <%= form.label :Measurement_Unit, style: "display: block" %>
       <%= form.number_field :measurement_unit %>
     </div>
   
-    <div>
+    <div class="form-group">
       <%= form.label :Price, style: "display: block" %>
       <%= form.number_field :price %>
     </div>
   
     <div>
-      <%= form.submit %>
+      <%= form.submit class:"btn btn-secondary" %> || <%= link_to "back", root_path, class:"btn btn-dark" %></p>
     </div>
   <% end %>
