@@ -48,9 +48,8 @@ To run the tests locally :
 - LinkedIn: [@mucyoclaude](https://www.linkedin.com/in/mucyoclaude)
 
 👤 **Ahmed**
-* GitHub: [github](https://github.com/)
-* Twitter: [@twitter(https://twitter.com/)
-* LinkedIn: [@linkedin](https://www.linkedin.com/in)
+* GitHub: [github](https://github.com/ReAliens)
+* LinkedIn: [@linkedin](https://www.linkedin.com/in/armali/)
 
 ## 🤝 Contributing
 
