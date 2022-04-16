@@ -10,7 +10,7 @@
             <p class="float-right">
                 <%= form_with url: recipe_path(@recipe.id), method: "put" do |form| %>
                 puplic
-                <%= form.check_box :public,  onchange: "this.form.submit();", checked: @recipe.public %>
+                <%= form.check_box :public, id: "flexSwitchCheckChecked", onchange: "this.form.submit();", checked: @recipe.public %>
                 <% end %>
             </p>
             <%end%>
