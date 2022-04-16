@@ -14,8 +14,7 @@ class FoodsController < ApplicationController
         flash[:notice] = 'Food created successfully'
         format.html { redirect_to foods_path(foods_path) }
       else
-        flash[:notice] = 'something went wrong, Try Again '
-        format.html { render :new }
+        format.html { render :new, status: :unprocessable_entity }
       end
     end
   end
