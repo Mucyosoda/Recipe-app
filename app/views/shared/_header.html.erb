@@ -1,0 +1,16 @@
+<header>
+  <div>
+    <%= link_to image_tag("logo.svg") %>
+  </div>
+  <div class="nav-links">
+    <nav class="<%= active?(foods_path) %>">
+    <%= link_to "Foods", foods_path %>
+    </nav>
+    <nav class="<%= active?(recipes_path) %>">
+    <%= link_to "Recipes", recipes_path %>
+    </nav>
+    <nav class="<%= active?(public_recipes_path) %>">
+    <%= link_to "Public recipes", public_recipes_path %>
+    </nav>
+  </div>
+</header>
